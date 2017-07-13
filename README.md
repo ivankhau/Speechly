@@ -1,7 +1,7 @@
 # Speechly
 Prep for interviews and social occasions. Hear a question, record a response, and playback.
 
-App uses speech synthesizer to ask a interview question. User then records a response and then hears a playback of the question and response.
+App uses speech synthesizer to ask a interview question. User then records a response and then hears a playback of the question and response. Includes in-app purchase. Currently on the App Store!
 
 ![Screenshot](http://i.imgur.com/MRJztwt.jpg)
 ![Screenshot](http://i.imgur.com/6HFAVqu.jpg)
