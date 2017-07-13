@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKx-nl-2dR">
+                                <rect key="frame" x="67" y="273" width="240" height="120"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pac-man (1)" translatesAutoresizingMaskIntoConstraints="NO" id="MNu-6i-8Gs">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="MNu-6i-8Gs" secondAttribute="height" multiplier="1:1" id="J7g-IV-cHl"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sound-bars-pulse (1)" translatesAutoresizingMaskIntoConstraints="NO" id="fSj-nh-s7b">
+                                        <rect key="frame" x="120" y="0.0" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="fSj-nh-s7b" secondAttribute="height" multiplier="1:1" id="Gv0-yz-DWZ"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="fSj-nh-s7b" secondAttribute="trailing" id="AVc-6I-UOH"/>
+                                    <constraint firstAttribute="bottom" secondItem="MNu-6i-8Gs" secondAttribute="bottom" id="As5-6y-bLv"/>
+                                    <constraint firstItem="fSj-nh-s7b" firstAttribute="top" secondItem="UKx-nl-2dR" secondAttribute="top" id="SSk-0k-YAy"/>
+                                    <constraint firstItem="fSj-nh-s7b" firstAttribute="leading" secondItem="MNu-6i-8Gs" secondAttribute="trailing" id="a1y-Bi-TmF"/>
+                                    <constraint firstItem="MNu-6i-8Gs" firstAttribute="top" secondItem="UKx-nl-2dR" secondAttribute="top" id="bip-9s-b0z"/>
+                                    <constraint firstItem="MNu-6i-8Gs" firstAttribute="leading" secondItem="UKx-nl-2dR" secondAttribute="leading" id="c4A-Uc-VKI"/>
+                                    <constraint firstAttribute="bottom" secondItem="fSj-nh-s7b" secondAttribute="bottom" id="gI2-N3-QcP"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.015686274509803921" green="0.20000000000000001" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="UKx-nl-2dR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="2hn-Fr-nZR"/>
+                            <constraint firstItem="UKx-nl-2dR" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="51" id="5Gt-ic-7ZC"/>
+                            <constraint firstItem="UKx-nl-2dR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="c3R-hz-mKe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UKx-nl-2dR" secondAttribute="trailing" constant="52" id="dVz-fW-pCi"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pac-man (1)" width="512" height="512"/>
+        <image name="sound-bars-pulse (1)" width="512" height="512"/>
+    </resources>
+</document>

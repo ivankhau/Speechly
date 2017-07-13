@@ -1,0 +1,324 @@
+//
+//  FDSoundActivatedRecorder.swift
+//  speechdojo
+//
+//  Created by Ivan Khau on 3/9/17.
+//  Copyright © 2017 Ivan Khau. All rights reserved.
+//
+
+import Foundation
+import AVFoundation
+
+/*
+ * HOW RECORDING WORKS
+ *
+ * V               Recording
+ * O             /-----------\
+ * L            /             \Fall
+ * U           /Rise           \
+ * M          /                 \
+ * E  --------                   --------
+ *    Listening                  Done
+ *
+ * We listen and save audio levels every `INTERVAL`
+ * When several consecutive levels exceed the recent moving average by a threshold, we record
+ * (The exceeding levels are not included in the moving average)
+ * When several consecutive levels deceed the recent moving average by a threshold, we stop recording
+ * (The deceeding levels are not included in the moving average)
+ *
+ * The final recording includes RISE, RECORDING, and FALL sections and the RISE and FALL
+ * parts are faded in and out to avoid clicking sounds at either end, you're welcome! Please
+ * mail a case of beer to: Wm Entriken / 410 Keats Rd / Huntingdon Vy PA 19006 USA
+ *
+ * Our "averages" are time averages of log squared power, an odd definition
+ * SEE: Averaging logs http://physics.stackexchange.com/questions/46228/averaging-decibels
+ *
+ * Please don't forget to use:
+ * try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
+ */
+
+/// These should be optional but I don't know how to do that is Swift
+@objc public protocol FDSoundActivatedRecorderDelegate {
+    /// A recording was triggered or manually started
+    func soundActivatedRecorderDidStartRecording(_ recorder: FDSoundActivatedRecorder)
+    
+    /// No recording has started or been completed after listening for `timeoutSeconds`
+    func soundActivatedRecorderDidTimeOut(_ recorder: FDSoundActivatedRecorder)
+    
+    /// The recording and/or listening ended and no recording was captured
+    func soundActivatedRecorderDidAbort(_ recorder: FDSoundActivatedRecorder)
+    
+    /// A recording was successfully captured
+    func soundActivatedRecorderDidFinishRecording(_ recorder: FDSoundActivatedRecorder, andSaved file:URL)
+}
+
+@objc public enum FDSoundActivatedRecorderStatus: Int {
+    case inactive
+    case listening
+    case recording
+    case processingRecording
+}
+
+/// An automated listener / recorder
+open class FDSoundActivatedRecorder: NSObject, AVAudioRecorderDelegate {
+    
+    /// Number of seconds until recording stops automatically
+    private let timeoutSeconds = 10.0
+    
+    /// A time interval in seconds to base all `INTERVALS` below
+    private let intervalSeconds = 0.05
+    
+    /// Minimum amount of time (in INTERVALS) to listen but not cause rise triggers
+    private let listeningMinimumIntervals = 2
+    
+    /// Amount of time (in INTERVALS) to average when deciding to trigger for listening
+    private let listeningAveragingIntervals = 7
+    
+    /// Relative signal strength (in dB) to detect triggers versus average listening level
+    private let riseTriggerDb = 13.0
+    
+    /// Number of triggers to begin recording
+    private let riseTriggerIntervals = 2
+    
+    /// Minimum amount of time (in INTERVALS) to record
+    private let recordingMinimumIntervals = 4
+    
+    /// Amount of time (in INTERVALS) to average when deciding to stop recording
+    private let recordingAveragingIntervals = 15
+    
+    /// Relative signal strength (in Db) to detect triggers versus average recording level
+    private let fallTriggerDb = 10.0
+    
+    /// Number of triggers to end recording
+    //private let fallTriggerIntervals = 20
+    ///////////// 2 /////////////////
+    private let fallTriggerIntervals = 2
+
+    
+    /// Recording sample rate (in Hz)
+    private let savingSamplesPerSecond = 22050
+    
+    /// Location of the recorded file
+    fileprivate lazy var recordedFileURL: URL = {
+        let file = "recording\(arc4random()).caf"
+        let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(file)
+        return url
+    }()
+    
+    fileprivate lazy var audioRecorder: AVAudioRecorder = {
+        // USE kAudioFormatLinearPCM
+        // SEE IMA4 vs M4A http://stackoverflow.com/questions/3509921/recorder-works-on-iphone-3gs-but-not-on-iphone-3g
+        let recordSettings: [String : Int] = [
+            AVSampleRateKey : self.savingSamplesPerSecond,
+            AVFormatIDKey : Int(kAudioFormatLinearPCM),
+            AVNumberOfChannelsKey : Int(1),
+            AVLinearPCMIsFloatKey : 0,
+            AVEncoderAudioQualityKey : Int.max
+        ]
+        //FIXME: do not use ! here
+        let audioRecorder = try! AVAudioRecorder(url: self.recordedFileURL, settings: recordSettings)
+        audioRecorder.delegate = self
+        audioRecorder.isMeteringEnabled = true
+        if !audioRecorder.prepareToRecord() {
+            // FDSoundActivateRecorder can't prepare recorder
+        }
+        return audioRecorder
+    }()
+    
+    fileprivate(set) var status = FDSoundActivatedRecorderStatus.inactive
+    fileprivate var listeningIntervals = [Double]()
+    fileprivate var recordingIntervals = [Double]()
+    fileprivate var triggerCount = 0
+    fileprivate var intervalTimer = Timer()
+    fileprivate var recordingBeginTime = CMTime()
+    fileprivate var recordingEndTime = CMTime()
+    
+    /// A log-scale reading between 0.0 (silent) and 1.0 (loud), nil if not recording
+    /// TODO: make this optional (KVO needs Objective-C compatible classes, Swift bug)
+    dynamic open var microphoneLevel: Double = 0.0
+    
+    /// Receiver for status updates
+    open weak var delegate: FDSoundActivatedRecorderDelegate?
+    
+    deinit {
+        self.abort()
+    }
+    
+    /// Listen and start recording when triggered
+    
+    //typealias MethodHandler1 = ()  -> Void
+    ////////////////////////////////////
+    
+    
+    //open func startListening(record: MethodHandler1) {
+    open func startListening() {
+        status = .listening
+        
+        //isTalking = true
+        //record()
+        
+        audioRecorder.stop()
+        audioRecorder.record(forDuration: timeoutSeconds)
+        intervalTimer = Timer.scheduledTimer(timeInterval: intervalSeconds, target: self, selector: #selector(FDSoundActivatedRecorder.interval), userInfo: nil, repeats: true)
+        self.listeningIntervals.removeAll()
+        self.recordingIntervals.removeAll()
+        self.triggerCount = 0
+    }
+    
+    /// Go back in time and start recording `riseTriggerIntervals` ago
+    open func startRecording() {
+        status = .recording
+        delegate?.soundActivatedRecorderDidStartRecording(self)
+        triggerCount = 0
+        let timeSamples = max(0.0, audioRecorder.currentTime - Double(intervalSeconds) * Double(riseTriggerIntervals)) * Double(savingSamplesPerSecond)
+        recordingBeginTime = CMTimeMake(Int64(timeSamples), Int32(savingSamplesPerSecond))
+    }
+    
+    /// End the recording and send any processed & saved file to `delegate`
+    open func stopAndSaveRecording() {
+        self.intervalTimer.invalidate()
+        guard status == .recording else {
+            return
+        }
+        status = .processingRecording
+        self.microphoneLevel = 0.0
+        let timeSamples = audioRecorder.currentTime * Double(savingSamplesPerSecond)
+        recordingEndTime = CMTimeMake(Int64(timeSamples), Int32(savingSamplesPerSecond))
+        audioRecorder.stop()
+        
+        // Prepare output
+        let trimmedAudioFileBaseName = "recordingConverted\(UUID().uuidString).caf"
+        let trimmedAudioFileURL = NSURL.fileURL(withPathComponents: [NSTemporaryDirectory(), trimmedAudioFileBaseName])!
+        if (trimmedAudioFileURL as NSURL).checkResourceIsReachableAndReturnError(nil) {
+            let fileManager = FileManager.default
+            _ = try? fileManager.removeItem(at: trimmedAudioFileURL)
+        }
+        
+        // Create time ranges for trimming and fading
+        let fadeInDoneTime = CMTimeAdd(recordingBeginTime, CMTimeMake(Int64(Double(riseTriggerIntervals) * Double(intervalSeconds) * Double(savingSamplesPerSecond)), Int32(savingSamplesPerSecond)))
+        let fadeOutStartTime = CMTimeSubtract(recordingEndTime, CMTimeMake(Int64(Double(fallTriggerIntervals) * Double(intervalSeconds) * Double(savingSamplesPerSecond)), Int32(savingSamplesPerSecond)))
+        let exportTimeRange = CMTimeRangeFromTimeToTime(recordingBeginTime, recordingEndTime)
+        let fadeInTimeRange = CMTimeRangeFromTimeToTime(recordingBeginTime, fadeInDoneTime)
+        let fadeOutTimeRange = CMTimeRangeFromTimeToTime(fadeOutStartTime, recordingEndTime)
+        
+        // Set up the AVMutableAudioMix which does fading
+        let avAsset = AVAsset(url: self.audioRecorder.url)
+        let tracks = avAsset.tracks(withMediaType: AVMediaTypeAudio)
+        let track = tracks[0]
+        let exportAudioMix = AVMutableAudioMix()
+        let exportAudioMixInputParameters = AVMutableAudioMixInputParameters(track: track)
+        exportAudioMixInputParameters.setVolumeRamp(fromStartVolume: 0.0, toEndVolume: 1.0, timeRange: fadeInTimeRange)
+        exportAudioMixInputParameters.setVolumeRamp(fromStartVolume: 1.0, toEndVolume: 0.0, timeRange: fadeOutTimeRange)
+        exportAudioMix.inputParameters = [exportAudioMixInputParameters]
+        
+        // Configure AVAssetExportSession which sets audio format
+        let exportSession = AVAssetExportSession(asset: avAsset, presetName: AVAssetExportPresetAppleM4A)!
+        exportSession.outputURL = trimmedAudioFileURL
+        exportSession.outputFileType = AVFileTypeAppleM4A
+        exportSession.timeRange = exportTimeRange
+        exportSession.audioMix = exportAudioMix
+        
+        exportSession.exportAsynchronously {
+            DispatchQueue.main.async {
+                self.status = .inactive
+                
+                switch exportSession.status {
+                case .completed:
+                    self.delegate?.soundActivatedRecorderDidFinishRecording(self, andSaved: trimmedAudioFileURL)
+                case .failed:
+                    // a failure may happen because of an event out of your control
+                    // for example, an interruption like a phone call comming in
+                    // make sure and handle this case appropriately
+                    // FIXME: add another delegate method for failing with exportSession.error
+                    self.delegate?.soundActivatedRecorderDidAbort(self)
+                default:
+                    self.delegate?.soundActivatedRecorderDidAbort(self)
+                }
+            }
+        }
+    }
+    
+    /// End any recording or listening and discard any recorded file
+    open func abort() {
+        self.intervalTimer.invalidate()
+        self.audioRecorder.stop()
+        if status == .recording {
+            status = .inactive
+            
+            //isTalking = false
+            ////////////////////////////////////
+            
+            self.delegate?.soundActivatedRecorderDidAbort(self)
+            let fileManager: FileManager = FileManager.default
+            _ = try? fileManager.removeItem(at: self.audioRecorder.url)
+        }
+    }
+    
+    /// This is a PRIVATE method but it must be public because a selector is used in NSTimer (Swift bug)
+    open func interval() {
+        guard self.audioRecorder.isRecording else {
+            // Timed out
+            self.abort()
+            return
+        }
+        
+        self.audioRecorder.updateMeters()
+        let currentLevel = Double(self.audioRecorder.averagePower(forChannel: 0))
+        switch currentLevel {
+        case _ where currentLevel > 0:
+            microphoneLevel = 1
+        case _ where currentLevel < -85:
+            microphoneLevel = 0
+        default:
+            microphoneLevel = 1 + currentLevel / 85
+        }
+        
+        switch status {
+        case .recording:
+            
+            //var speechlessTimeout = 0
+            //////////////////////
+            
+            let recordingAverageLevel = recordingIntervals.reduce(0.0, +) / Double(recordingIntervals.count)
+            if recordingIntervals.count >= recordingMinimumIntervals && currentLevel <= recordingAverageLevel - fallTriggerDb {
+                
+                triggerCount = triggerCount + 1
+            } else {
+                triggerCount = 0
+                recordingIntervals.append(currentLevel)
+                if recordingIntervals.count > recordingAveragingIntervals {
+                    recordingIntervals.remove(at: 0)
+                }
+            }
+            //let when = DispatchTime.now() + 5 // change 2 to desired number of seconds
+            //DispatchQueue.main.asyncAfter(deadline: when) {
+            //    speechlessTimeout = 1
+            //}
+            
+            if triggerCount >= fallTriggerIntervals /*&& speechlessTimeout == 1*/ {
+                //speechlessTimeout = 0
+                ///////////////////////
+                
+                stopAndSaveRecording()
+            }
+        case .listening:
+            let listeningAverageLevel = listeningIntervals.reduce(0.0, +) / Double(listeningIntervals.count)
+            if listeningIntervals.count >= listeningMinimumIntervals && currentLevel >= listeningAverageLevel + riseTriggerDb {
+                triggerCount = triggerCount + 1
+            } else {
+                triggerCount = 0
+                listeningIntervals.append(currentLevel)
+                if listeningIntervals.count > listeningAveragingIntervals {
+                    listeningIntervals.remove(at: 0)
+                }
+            }
+            if triggerCount >= riseTriggerIntervals {
+                startRecording()
+            }
+        default:
+            break
+        }
+    }
+    
+}
+
