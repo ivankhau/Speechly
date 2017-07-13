@@ -1,0 +1,541 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		222575441E72749C002AC6EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222575431E72749C002AC6EA /* AppDelegate.swift */; };
+		222575491E72749C002AC6EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222575471E72749C002AC6EA /* Main.storyboard */; };
+		2225754C1E72749C002AC6EA /* speechdojo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2225754A1E72749C002AC6EA /* speechdojo.xcdatamodeld */; };
+		2225754E1E72749C002AC6EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2225754D1E72749C002AC6EA /* Assets.xcassets */; };
+		222575511E72749C002AC6EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2225754F1E72749C002AC6EA /* LaunchScreen.storyboard */; };
+		2225755E1E72767C002AC6EA /* FDSoundActivatedRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225755D1E72767C002AC6EA /* FDSoundActivatedRecorder.swift */; };
+		222575631E7277E7002AC6EA /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222575621E7277E7002AC6EA /* ExerciseViewController.swift */; };
+		222575661E736C9B002AC6EA /* TongueTwisterViewControllerDeprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222575651E736C9B002AC6EA /* TongueTwisterViewControllerDeprecated.swift */; };
+		222575681E754EB9002AC6EA /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222575671E754EB9002AC6EA /* MenuViewController.swift */; };
+		2225756A1E755796002AC6EA /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222575691E755796002AC6EA /* MenuCell.swift */; };
+		222575711E757092002AC6EA /* MultiPickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222575701E757092002AC6EA /* MultiPickerDialog.swift */; };
+		2225759A1E759105002AC6EA /* TypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222575991E759105002AC6EA /* TypeViewController.swift */; };
+		2257F82D1E854DB2003A7CAF /* FirstLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257F82C1E854DB2003A7CAF /* FirstLoginViewController.swift */; };
+		2259B0241E7BF92600218DD7 /* FDWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2259B0231E7BF92600218DD7 /* FDWaveformView.swift */; };
+		225CB3911E8751E8004B5A05 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225CB3901E8751E8004B5A05 /* StoreKit.framework */; };
+		22ADC1891E80160A005D6B58 /* SpeakerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ADC1881E80160A005D6B58 /* SpeakerCollectionViewController.swift */; };
+		22ADC18B1E801675005D6B58 /* SpeakerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ADC18A1E801675005D6B58 /* SpeakerCollectionViewCell.swift */; };
+		22ADC18D1E801C73005D6B58 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ADC18C1E801C73005D6B58 /* Global.swift */; };
+		22ADC1901E80C751005D6B58 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ADC18F1E80C751005D6B58 /* QuestionTableViewCell.swift */; };
+		22BAD2D61E819D1F002CFB8D /* AllQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BAD2D51E819D1F002CFB8D /* AllQuestions.swift */; };
+		22E01C051E820A2E004667A9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E01C041E820A2E004667A9 /* Settings.swift */; };
+		22E01C071E820A3B004667A9 /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E01C061E820A3B004667A9 /* Settings.xib */; };
+		4F6558893C84D68AFA817B36 /* Pods_speechdojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFCF0E5CE18351EDEA8B2D6C /* Pods_speechdojo.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		222575401E72749C002AC6EA /* speechdojo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = speechdojo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		222575431E72749C002AC6EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		222575481E72749C002AC6EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2225754B1E72749C002AC6EA /* speechdojo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = speechdojo.xcdatamodel; sourceTree = "<group>"; };
+		2225754D1E72749C002AC6EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		222575501E72749C002AC6EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		222575521E72749C002AC6EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2225755D1E72767C002AC6EA /* FDSoundActivatedRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDSoundActivatedRecorder.swift; sourceTree = "<group>"; };
+		222575621E7277E7002AC6EA /* ExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
+		222575651E736C9B002AC6EA /* TongueTwisterViewControllerDeprecated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TongueTwisterViewControllerDeprecated.swift; sourceTree = "<group>"; };
+		222575671E754EB9002AC6EA /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		222575691E755796002AC6EA /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		222575701E757092002AC6EA /* MultiPickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiPickerDialog.swift; sourceTree = "<group>"; };
+		222575731E757F4B002AC6EA /* speechdojo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "speechdojo-Bridging-Header.h"; sourceTree = "<group>"; };
+		222575991E759105002AC6EA /* TypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeViewController.swift; sourceTree = "<group>"; };
+		2257F82C1E854DB2003A7CAF /* FirstLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstLoginViewController.swift; sourceTree = "<group>"; };
+		2259B0231E7BF92600218DD7 /* FDWaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDWaveformView.swift; sourceTree = "<group>"; };
+		225CB3901E8751E8004B5A05 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		22ADC1881E80160A005D6B58 /* SpeakerCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCollectionViewController.swift; sourceTree = "<group>"; };
+		22ADC18A1E801675005D6B58 /* SpeakerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCollectionViewCell.swift; sourceTree = "<group>"; };
+		22ADC18C1E801C73005D6B58 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		22ADC18F1E80C751005D6B58 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
+		22BAD2D51E819D1F002CFB8D /* AllQuestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllQuestions.swift; sourceTree = "<group>"; };
+		22E01C041E820A2E004667A9 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		22E01C061E820A3B004667A9 /* Settings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Settings.xib; sourceTree = "<group>"; };
+		4417C3D0A7ED9E269470D1CD /* Pods-speechdojo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-speechdojo.release.xcconfig"; path = "Pods/Target Support Files/Pods-speechdojo/Pods-speechdojo.release.xcconfig"; sourceTree = "<group>"; };
+		63DA2C3A0B638E619F6519EB /* Pods-speechdojo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-speechdojo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-speechdojo/Pods-speechdojo.debug.xcconfig"; sourceTree = "<group>"; };
+		FFCF0E5CE18351EDEA8B2D6C /* Pods_speechdojo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_speechdojo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2225753D1E72749C002AC6EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F6558893C84D68AFA817B36 /* Pods_speechdojo.framework in Frameworks */,
+				225CB3911E8751E8004B5A05 /* StoreKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		219FA4E0AFA7589A59C02A8E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				225CB3901E8751E8004B5A05 /* StoreKit.framework */,
+				FFCF0E5CE18351EDEA8B2D6C /* Pods_speechdojo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		222575371E72749C002AC6EA = {
+			isa = PBXGroup;
+			children = (
+				222575421E72749C002AC6EA /* speechdojo */,
+				222575411E72749C002AC6EA /* Products */,
+				2AE665824373700326920F2F /* Pods */,
+				219FA4E0AFA7589A59C02A8E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		222575411E72749C002AC6EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				222575401E72749C002AC6EA /* speechdojo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		222575421E72749C002AC6EA /* speechdojo */ = {
+			isa = PBXGroup;
+			children = (
+				222575591E72751D002AC6EA /* src */,
+				222575431E72749C002AC6EA /* AppDelegate.swift */,
+				222575731E757F4B002AC6EA /* speechdojo-Bridging-Header.h */,
+				222575471E72749C002AC6EA /* Main.storyboard */,
+				2225754D1E72749C002AC6EA /* Assets.xcassets */,
+				2225754F1E72749C002AC6EA /* LaunchScreen.storyboard */,
+				222575521E72749C002AC6EA /* Info.plist */,
+				2225754A1E72749C002AC6EA /* speechdojo.xcdatamodeld */,
+				22ADC18C1E801C73005D6B58 /* Global.swift */,
+			);
+			path = speechdojo;
+			sourceTree = "<group>";
+		};
+		222575591E72751D002AC6EA /* src */ = {
+			isa = PBXGroup;
+			children = (
+				22E01BFB1E82084C004667A9 /* SettingsXib */,
+				22BAD2D81E81F338002CFB8D /* Unused */,
+				22BAD2D71E81F31D002CFB8D /* MenuViewController */,
+				22ADC18E1E80C71C005D6B58 /* ExerciseViewController */,
+				22ADC1831E8013E3005D6B58 /* SpeakerSelectViewController */,
+				222575641E736C7B002AC6EA /* deprecated */,
+				2225755D1E72767C002AC6EA /* FDSoundActivatedRecorder.swift */,
+				22BAD2D51E819D1F002CFB8D /* AllQuestions.swift */,
+				2257F82C1E854DB2003A7CAF /* FirstLoginViewController.swift */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		222575641E736C7B002AC6EA /* deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				222575651E736C9B002AC6EA /* TongueTwisterViewControllerDeprecated.swift */,
+			);
+			name = deprecated;
+			sourceTree = "<group>";
+		};
+		22ADC1831E8013E3005D6B58 /* SpeakerSelectViewController */ = {
+			isa = PBXGroup;
+			children = (
+				22ADC1881E80160A005D6B58 /* SpeakerCollectionViewController.swift */,
+				22ADC18A1E801675005D6B58 /* SpeakerCollectionViewCell.swift */,
+			);
+			name = SpeakerSelectViewController;
+			sourceTree = "<group>";
+		};
+		22ADC18E1E80C71C005D6B58 /* ExerciseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				222575621E7277E7002AC6EA /* ExerciseViewController.swift */,
+				22ADC18F1E80C751005D6B58 /* QuestionTableViewCell.swift */,
+			);
+			name = ExerciseViewController;
+			sourceTree = "<group>";
+		};
+		22BAD2D71E81F31D002CFB8D /* MenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				222575671E754EB9002AC6EA /* MenuViewController.swift */,
+				222575691E755796002AC6EA /* MenuCell.swift */,
+			);
+			name = MenuViewController;
+			sourceTree = "<group>";
+		};
+		22BAD2D81E81F338002CFB8D /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				222575701E757092002AC6EA /* MultiPickerDialog.swift */,
+				222575991E759105002AC6EA /* TypeViewController.swift */,
+				2259B0231E7BF92600218DD7 /* FDWaveformView.swift */,
+			);
+			name = Unused;
+			sourceTree = "<group>";
+		};
+		22E01BFB1E82084C004667A9 /* SettingsXib */ = {
+			isa = PBXGroup;
+			children = (
+				22E01C041E820A2E004667A9 /* Settings.swift */,
+				22E01C061E820A3B004667A9 /* Settings.xib */,
+			);
+			name = SettingsXib;
+			sourceTree = "<group>";
+		};
+		2AE665824373700326920F2F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				63DA2C3A0B638E619F6519EB /* Pods-speechdojo.debug.xcconfig */,
+				4417C3D0A7ED9E269470D1CD /* Pods-speechdojo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2225753F1E72749C002AC6EA /* speechdojo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 222575551E72749C002AC6EA /* Build configuration list for PBXNativeTarget "speechdojo" */;
+			buildPhases = (
+				9FEFAE14B6B736F508DDAFBE /* [CP] Check Pods Manifest.lock */,
+				2225753C1E72749C002AC6EA /* Sources */,
+				2225753D1E72749C002AC6EA /* Frameworks */,
+				2225753E1E72749C002AC6EA /* Resources */,
+				C1680F2BC72AE5D20125D6A8 /* [CP] Embed Pods Frameworks */,
+				50B71682A38543A9CA544697 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = speechdojo;
+			productName = speechdojo;
+			productReference = 222575401E72749C002AC6EA /* speechdojo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		222575381E72749C002AC6EA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Ivan Khau";
+				TargetAttributes = {
+					2225753F1E72749C002AC6EA = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = FY524856QD;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 2225753B1E72749C002AC6EA /* Build configuration list for PBXProject "speechdojo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 222575371E72749C002AC6EA;
+			productRefGroup = 222575411E72749C002AC6EA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2225753F1E72749C002AC6EA /* speechdojo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2225753E1E72749C002AC6EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				222575511E72749C002AC6EA /* LaunchScreen.storyboard in Resources */,
+				2225754E1E72749C002AC6EA /* Assets.xcassets in Resources */,
+				22E01C071E820A3B004667A9 /* Settings.xib in Resources */,
+				222575491E72749C002AC6EA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		50B71682A38543A9CA544697 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-speechdojo/Pods-speechdojo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FEFAE14B6B736F508DDAFBE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C1680F2BC72AE5D20125D6A8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-speechdojo/Pods-speechdojo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2225753C1E72749C002AC6EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2225754C1E72749C002AC6EA /* speechdojo.xcdatamodeld in Sources */,
+				2259B0241E7BF92600218DD7 /* FDWaveformView.swift in Sources */,
+				222575441E72749C002AC6EA /* AppDelegate.swift in Sources */,
+				222575681E754EB9002AC6EA /* MenuViewController.swift in Sources */,
+				22ADC18B1E801675005D6B58 /* SpeakerCollectionViewCell.swift in Sources */,
+				22ADC18D1E801C73005D6B58 /* Global.swift in Sources */,
+				222575631E7277E7002AC6EA /* ExerciseViewController.swift in Sources */,
+				22BAD2D61E819D1F002CFB8D /* AllQuestions.swift in Sources */,
+				222575661E736C9B002AC6EA /* TongueTwisterViewControllerDeprecated.swift in Sources */,
+				2225759A1E759105002AC6EA /* TypeViewController.swift in Sources */,
+				2225756A1E755796002AC6EA /* MenuCell.swift in Sources */,
+				2225755E1E72767C002AC6EA /* FDSoundActivatedRecorder.swift in Sources */,
+				22E01C051E820A2E004667A9 /* Settings.swift in Sources */,
+				22ADC1891E80160A005D6B58 /* SpeakerCollectionViewController.swift in Sources */,
+				222575711E757092002AC6EA /* MultiPickerDialog.swift in Sources */,
+				22ADC1901E80C751005D6B58 /* QuestionTableViewCell.swift in Sources */,
+				2257F82D1E854DB2003A7CAF /* FirstLoginViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		222575471E72749C002AC6EA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				222575481E72749C002AC6EA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2225754F1E72749C002AC6EA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				222575501E72749C002AC6EA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		222575531E72749C002AC6EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		222575541E72749C002AC6EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		222575561E72749C002AC6EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63DA2C3A0B638E619F6519EB /* Pods-speechdojo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = FY524856QD;
+				INFOPLIST_FILE = speechdojo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Khau.speechly;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "speechdojo/speechdojo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		222575571E72749C002AC6EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4417C3D0A7ED9E269470D1CD /* Pods-speechdojo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = FY524856QD;
+				INFOPLIST_FILE = speechdojo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Khau.speechly;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "speechdojo/speechdojo-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2225753B1E72749C002AC6EA /* Build configuration list for PBXProject "speechdojo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				222575531E72749C002AC6EA /* Debug */,
+				222575541E72749C002AC6EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		222575551E72749C002AC6EA /* Build configuration list for PBXNativeTarget "speechdojo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				222575561E72749C002AC6EA /* Debug */,
+				222575571E72749C002AC6EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2225754A1E72749C002AC6EA /* speechdojo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2225754B1E72749C002AC6EA /* speechdojo.xcdatamodel */,
+			);
+			currentVersion = 2225754B1E72749C002AC6EA /* speechdojo.xcdatamodel */;
+			path = speechdojo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 222575381E72749C002AC6EA /* Project object */;
+}
